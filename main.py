@@ -1,10 +1,11 @@
 from DataFormat import Report
-from DataBase import DB
+from DataBase import ReportDB
 
 """ インスタンスを作成する """
 def make_report_instance(db_name):
-    db = DB(db_name)
-    report_lst,inst_lst = db.fetchall(),[]
+    db = ReportDB(db_name)
+    tablename = "CommentData"
+    report_lst,inst_lst = db.fetchall(tablename),[]
     for r in report_lst:
         studentID,year,month,day,subject,score,c1,c2,c3 = r
         report = Report(studentID,year,month,day,subject,score,c1,c2,c3)
